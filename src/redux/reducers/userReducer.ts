@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { PayloadAction } from '@reduxjs/toolkit';
 
 export type UserType = {
     id: string;
@@ -14,23 +13,20 @@ const slice = createSlice({
     name: 'user',
     initialState: [] as UserType[],
     reducers: {
-        setAddUser: (state, action: PayloadAction<UserType>) => {            
-            state.push(action.payload);                        
+        setAddUser: (state, action) => {                        
+            state.push(action.payload);               
         },
-        setUserConnect: (state, action) => {
-            const index = state.findIndex(item => item.email === action.payload);
+        setUserLogin: (state, action) => {            
+            console.log(state, action.payload);            
+            const index = state.findIndex(item => item.email === action.payload.email && item.password === action.payload.password);
+            console.log(index);
             if(index !== -1) {
-                state[index].name = 'alterado';
-            }
-        },
-        setResetPassord: (state, action) => {
-
-        },
-        setUserSearch: (state, action) => {
-            state.filter(item => item.email === action.payload);             
-        }
+                state[index].connect = true;
+            }                        
+        }       
+        
     }
 });
 
-export const { setAddUser, setResetPassord, setUserConnect, setUserSearch } = slice.actions;
+export const { setAddUser, setUserLogin } = slice.actions;
 export default slice.reducer;

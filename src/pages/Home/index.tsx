@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { v4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks/useAppSelector'; 
-import { setAddUser, setUserConnect, UserType } from '../../redux/reducers/userReducer';
+import { setAddUser, setUserLogin, UserType } from '../../redux/reducers/userReducer';
 import { useDispatch } from 'react-redux';
 import * as C from './styles';
 
@@ -9,8 +10,8 @@ export const Home = () => {
     const user = useAppSelector(state => state.user);
 
     const dispatch = useDispatch();
-
-    const [signin, setSignin] = useState<boolean>(true);
+    const navigate = useNavigate();
+    
     const [signup, setSignup] = useState<boolean>(false);    
     const [nameInput, setNameInput] = useState<string>('');
     const [lastNameInput, setLasNameInput] = useState<string>('');
@@ -78,13 +79,28 @@ export const Home = () => {
         }
     }
 
-    const handleUserLogin = () => {
-        if(emailInput && passwordInput) {                      
-            
+    const handleClickLogin = () => { 
+        if(emailInput && passwordInput) {            
+            const email: boolean = user.some(item => item.email === emailInput);
+            const password: boolean = user.some(item => item.password === passwordInput);
+
+            if(email && password) {
+                const Login = {
+                    email: emailInput,
+                    password: passwordInput
+                }
+                dispatch(
+                    setUserLogin(Login)
+                );
+                navigate('/feed');
+            } else {
+                alert('Email e/ou senha incorretos!');
+            }
             
         } else {
-            alert('Preencha todos os campos!');
+            alert('Preencha todos os campos!')
         }
+                        
     }
 
     return (
@@ -97,16 +113,12 @@ export const Home = () => {
                     <C.LogoText>LadayBook</C.LogoText>                    
                 </C.Logo> 
                 <C.Line />                     
-                {signin &&
-                    <>
-                        <C.Input type="text" placeholder="Email" value={emailInput === '' ? '' : emailInput} onChange={handleEmailInput} />
-                        <C.Input type="text" placeholder="Senha" value={passwordInput === '' ? '' : passwordInput} onChange={handlePasswordInput} />
-                        <C.Input type="button" value="Entrar" onClick={handleUserLogin} />
-                        <C.Link>Esqueceu a senha?</C.Link>                        
-                        <C.Line />
-                        <C.Button onClick={handleAddNewUser}>Criar nova conta</C.Button>
-                    </>                    
-                }
+                <C.Input type="text" placeholder="Email" value={emailInput === '' ? '' : emailInput} onChange={handleEmailInput} />
+                <C.Input type="password" placeholder="Senha" value={passwordInput === '' ? '' : passwordInput} onChange={handlePasswordInput} />
+                <C.Input type="submit" value="Entrar" onClick={handleClickLogin} />                        
+                <C.Link>Esqueceu a senha?</C.Link>                        
+                <C.Line />
+                <C.Button onClick={handleAddNewUser}>Criar nova conta</C.Button>               
                 {signup &&
                     <C.AddUser>
                         <C.Form>

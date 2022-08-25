@@ -85,7 +85,7 @@ export const Input = styled.input`
         border: 1px solid #166fe5;
     }
 
-    &[type="button"] {        
+    &[type="submit"] {        
         border: 0;
         background-color: #1877f2;
         color: #fff;
