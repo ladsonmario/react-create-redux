@@ -21,7 +21,7 @@ export const Container = styled.div`
 
 	-webkit-animation: color-change-2x 4s linear infinite alternate both;
 	animation: color-change-2x 4s linear infinite alternate both;
-    height: 100vh;            
+    min-height: 100vh;            
 `;
 
 export const Opacity = styled.div`
