@@ -1,13 +1,14 @@
 import * as C from './App.styles';
+import { Background } from './components/Background';
 import { MainRouter } from './routes/MainRouter';
 
 function App() {
-  return (
-    <C.Container>
-
-      <MainRouter />
-
-    </C.Container>      
+  return (    
+    <Background>
+      <C.Container>
+        <MainRouter />
+      </C.Container>
+    </Background>         
   )
 }
 

@@ -19,12 +19,18 @@ export const Container = styled.div`
         }
     }
 
-	-webkit-animation: color-change-2x 4s linear infinite alternate both;
-	animation: color-change-2x 4s linear infinite alternate both;
-    height: 100vh;
-    display: flex;
+    -webkit-animation: color-change-2x 4s linear infinite alternate both;
+    animation: color-change-2x 4s linear infinite alternate both;    
+
+    display: flex;    
+    justify-content: center;
     align-items: center;
-    justify-content: center;    
+    height: 100vh; 
+    position: absolute;
+    left: 0;   
+    top: 0;
+    right: 0;
+    bottom: 0;
 `;
 
 export const Form = styled.div`
@@ -42,34 +48,8 @@ export const Form = styled.div`
 
 export const Line = styled.hr`
     width: 100%;
-    margin: 15px;
+    margin: 15px 0;
     color: #ddd;
-`;
-
-export const Logo = styled.div`
-    display: flex;
-    align-items: center;        
-    font-weight: 600;
-    font-size: 25px; 
-`;
-
-export const IconContainer = styled.div`
-    background-color: #166fe5;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    border-radius: 50%;
-    margin-right: 5px;
-`;
-
-export const LogoIcon = styled.div`
-    color: #fff;    
-`;
-
-export const LogoText = styled.div`
-    color: #166fe5;    
 `;
 
 export const Input = styled.input`
@@ -98,16 +78,6 @@ export const Link = styled.a`
     color: #1877f2;
 `;
 
-export const Button = styled.button`
-    font-size: 20px;
-    background-color: #36a420;
-    border: 0;
-    padding: 10px 5px;
-    color: #fff;
-    border-radius: 10px;
-    cursor: pointer;
-`;
-
 export const AddUser = styled.div`
     position: fixed;
     height: 100%;
@@ -116,7 +86,6 @@ export const AddUser = styled.div`
     left: 0;
     right: 0;
     bottom: 0;    
-    background-color: rgba(255,255,255, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;

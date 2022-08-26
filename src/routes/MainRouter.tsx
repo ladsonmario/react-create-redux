@@ -5,6 +5,6 @@ import { Home } from '../pages/Home';
 export const MainRouter = () => {
     return useRoutes([
         {path: '/', element: <Home />},
-        {path: '/feed', element: <Feed />}
+        {path: '/feed/:username', element: <Feed />}
     ]);
 }
