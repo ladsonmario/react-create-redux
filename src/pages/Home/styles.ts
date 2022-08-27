@@ -58,7 +58,12 @@ export const Input = styled.input`
     padding: 10px 5px;
     font-size: 20px;
     margin-bottom: 15px;
-    border: 1px solid #666;    
+    border: 1px solid #666;
+    transition: all ease .3s;
+
+    &:hover {
+        box-shadow: 0 0 5px #333;
+    }    
     
     &:focus {
         outline: 1px solid #00BFFF;
@@ -76,6 +81,7 @@ export const Input = styled.input`
 
 export const Link = styled.a`
     color: #1877f2;
+    cursor: not-allowed;
 `;
 
 export const AddUser = styled.div`

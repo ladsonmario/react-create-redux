@@ -75,7 +75,9 @@ export const Feed = () => {
             <C.Feed>
                 {post.map((item, index) => (
                     <C.Post key={index}> 
-                        <C.Link onClick={() => handleDelPost(item.id)}>Excluir</C.Link>                       
+                        {item.username === params.username &&
+                            <C.Link onClick={() => handleDelPost(item.id)}>Excluir</C.Link>                       
+                        }                        
                         <C.ImgNameHours>
                             <C.PostImg>
                                 <C.PerfilImgPost src={PerfilImg} alt="" />

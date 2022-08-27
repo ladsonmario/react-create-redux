@@ -6,7 +6,6 @@ import { setAddUser, setUserLogin, UserType } from '../../redux/reducers/userRed
 import { useDispatch } from 'react-redux';
 import * as C from './styles';
 import { Logo } from '../../components/Logo';
-import { Background } from '../../components/Background';
 import { Button } from '../../components/Button';
 
 export const Home = () => {

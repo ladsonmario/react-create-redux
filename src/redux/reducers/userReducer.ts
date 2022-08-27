@@ -19,21 +19,11 @@ const slice = createSlice({
         },
         setUserLogin: (state, action) => {   
             if(action.payload.email && action.payload.password) {
-                const index = state.findIndex(item => item.email === action.payload.email && item.password === action.payload.password);
-                console.log(index);
+                const index = state.findIndex(item => item.email === action.payload.email && item.password === action.payload.password);                
                 if(index !== -1) {
                     state[index].connect = true;
                 }
-            } 
-            if(action.payload.username && action.payload.password) {
-                const index = state.findIndex(item => item.username === action.payload.username && item.password === action.payload.password);
-                console.log(index);
-                if(index !== -1) {
-                    state[index].connect = true;
-                }
-            }                      
-            
-            console.log(state, action.payload);                         
+            }                                                                      
         }       
         
     }

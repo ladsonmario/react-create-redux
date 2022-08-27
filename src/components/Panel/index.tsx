@@ -3,6 +3,7 @@ import { useAppSelector } from '../../redux/hooks/useAppSelector';
 import { Logo } from '../Logo';
 import { Button } from '../Button';
 import * as C from './styles';
+import { useEffect } from 'react';
 
 export const Panel = () => {
     const user = useAppSelector(state => state.user);
@@ -10,10 +11,15 @@ export const Panel = () => {
     const navigate = useNavigate();
 
     const index = user.findIndex(item => item.username === params.username);
-
-    const handlePerfil = () => {
-
-    }
+    
+    useEffect(() => {
+        if(index === -1) {        
+            navigate('/');
+            setTimeout(() => {
+                alert('Crie uma conta ou faça login!');
+            }, 100);            
+        }
+    }, [index]);      
     
     const handleExit = () => {
         navigate('/');
@@ -22,9 +28,11 @@ export const Panel = () => {
     return (
         <C.Container>
             <C.Panel>
-                <Logo icon={true} content={`${user[index].name} ${user[index].lastName}`} />
+                {user[index] &&
+                    <Logo icon={true} content={`${user[index].name} ${user[index].lastName}`} />
+                }                
                 <C.Div>
-                    <Button content="Perfil" bgColor="#1877f2" onClick={handlePerfil} />
+                    <Button content="Perfil" bgColor="#1877f2" disabled={true} />
                     <Button content="Sair" bgColor="#CC2427" onClick={handleExit} />
                 </C.Div>
             </C.Panel>  

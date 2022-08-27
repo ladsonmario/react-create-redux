@@ -20,7 +20,7 @@ export const Posts2 = {
     id: v4(),
     date: new Date().toString(),
     username: 'ladsonmario',
-    post: 'Espero que tenham gostado do meu trabalho =D',
+    post: `Espero que tenham gostado do meu trabalho =D`,
     like: 4562
 };
 
